@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RePoth</string>
+    <string name="no_attach_file"> </string>
+    <string name="settings_navbar_menu">Settings</string>
+    <string name="library_navbar_menu">Library</string>
+    <string name="report_navbar_menu">Report</string>
+    <string name="history_navbar_menu">History</string>
+    <string name="home_navbar_menu">Home</string>
+    <string name="onboarding_text">Slogan</string>
+    <string name="notification_emoji_desc">A ring as a symbol of notification.</string>
+    <string name="back_btn_desc">Arrow icon to navigate back to previous menu.</string>
+    <string name="notification_menu_intro">Notification</string>
+    <string name="loading_frame">Loading frame.</string>
+    <string name="image_preview_container_desc">A preview showcase for recently taken picture to be send to tensorflow or retake</string>
+    <string name="send_btn_desc">An message paper is flying, indicating sending activity</string>
+    <string name="picture_retake_btn_desc">An retake icon, usually indicated by turn back icon</string>
+</resources>
