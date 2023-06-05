@@ -68,7 +68,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_margin="5dp"
-        app:lottie_rawRes="@raw/loading"
+        app:lottie_rawRes="@raw/loading_animation"
         app:lottie_autoPlay="true"
         android:visibility="invisible"
         app:layout_constraintTop_toTopOf="parent"

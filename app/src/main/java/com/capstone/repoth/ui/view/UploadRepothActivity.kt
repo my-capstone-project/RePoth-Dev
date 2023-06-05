@@ -23,6 +23,7 @@ import com.capstone.repoth.data.model.UserData
 import com.capstone.repoth.data.model.UserPreferences
 import com.capstone.repoth.databinding.ActivityUploadRepothBinding
 import com.capstone.repoth.helper.*
+import com.capstone.repoth.ui.view.camera.CameraActivity
 import com.capstone.repoth.ui.viewmodel.UploadRepothViewModel
 import com.capstone.repoth.ui.viewmodel.ViewModelFactory
 import okhttp3.MediaType.Companion.toMediaType
@@ -35,11 +36,10 @@ import java.io.File
 class UploadRepothActivity : AppCompatActivity() {
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-
     private lateinit var binding: ActivityUploadRepothBinding
     private var getFile: File? = null
     private var result: Bitmap? = null
-    private lateinit var uploadStoryViewModel: UploadRepothViewModel
+    private lateinit var uploadRepothViewModel: UploadRepothViewModel
     private lateinit var user: UserData
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -128,10 +128,10 @@ class UploadRepothActivity : AppCompatActivity() {
                 requestImageFile
             )
 
-            uploadStoryViewModel.getUser().observe(this) { user ->
+            uploadRepothViewModel.getUser().observe(this) { user ->
                 this.user = user
-                uploadStoryViewModel.uploadImage(user.token, imageMultipart)
-                uploadStoryViewModel.fileUploadResponse.observe(this@UploadRepothActivity) { fileUploadResponse ->
+                uploadRepothViewModel.uploadImage(user.token, imageMultipart)
+                uploadRepothViewModel.fileUploadResponse.observe(this@UploadRepothActivity) { fileUploadResponse ->
                     if (!fileUploadResponse.error) {
                         binding.btnUpload.visibility = View.INVISIBLE
                         binding.progressBar.visibility = View.VISIBLE
@@ -150,7 +150,7 @@ class UploadRepothActivity : AppCompatActivity() {
     }
 
     private fun progressBar() {
-        uploadStoryViewModel.isLoading.observe(this) {
+        uploadRepothViewModel.isLoading.observe(this) {
             binding.apply {
                 if (it){
                     btnUpload.visibility = View.INVISIBLE

@@ -1,4 +1,4 @@
-package com.capstone.repoth.ui.view
+package com.capstone.repoth.ui.view.camera
 
 import android.content.Intent
 import android.os.Build
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -19,9 +20,11 @@ import com.capstone.repoth.helper.createFile
 import com.capstone.repoth.ui.view.UploadRepothActivity.Companion.CAMERA_X_RESULT
 
 class CameraActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityCameraBinding
     private var imageCapture: ImageCapture? = null
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
@@ -47,7 +50,11 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    showToast(this@CameraActivity,getString(R.string.image_failed))
+                    Toast.makeText(
+                        this@CameraActivity,
+                        "Gagal mengambil gambar.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val intent = Intent()
@@ -56,7 +63,7 @@ class CameraActivity : AppCompatActivity() {
                         "isBackCamera",
                         cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
                     )
-                    setResult(CAMERA_X_RESUlT, intent)
+                    setResult(CAMERA_X_RESULT, intent)
                     finish()
                 }
             }
@@ -81,7 +88,11 @@ class CameraActivity : AppCompatActivity() {
                     imageCapture
                 )
             } catch (exc: Exception) {
-                showToast(this,getString(R.string.camera_failed))
+                Toast.makeText(
+                    this@CameraActivity,
+                    "Gagal memunculkan kamera.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }, ContextCompat.getMainExecutor(this))
     }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryContainer"
     app:layoutDescription="@xml/activity_onboarding_scene"
-    tools:context=".ui.OnboardingActivity">
+    tools:context=".ui.view.home.OnboardingActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/onboarding_img"

@@ -14,4 +14,11 @@
     <string name="image_preview_container_desc">A preview showcase for recently taken picture to be send to tensorflow or retake</string>
     <string name="send_btn_desc">An message paper is flying, indicating sending activity</string>
     <string name="picture_retake_btn_desc">An retake icon, usually indicated by turn back icon</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="homepage_intro_pic_desc">Pothole image</string>
+    <string name="notification_icon_desc">Bell icon for indicating notification section</string>
+    <string name="home_header_text">Report your complaint with us</string>
+    <string name="scanner_fab_icon_desc">A report-like icon for indicating that the button is leading to camera reporting feature.</string>
+    <string name="logo_content_desc">Logo RePoth</string>
+    <string name="app_slogan">Slogan</string>
 </resources>
