@@ -9,6 +9,14 @@
     tools:context=".ui.view.home.OnboardingActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/onboarding_img_placeholder"
+        style="@style/OnboardingImage.Transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/onboarding_img"
         style="@style/OnboardingImage"
         android:layout_marginBottom="125dp"
