@@ -9,14 +9,14 @@
 
     <ImageView
         android:id="@+id/back_btn"
-        style="@style/BackButton"
+        style="@style/Widget.AppCompat.Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/back_btn_desc" />
 
     <ImageView
         android:id="@+id/notification_page_intro_emoji_icon"
-        style="@style/PageHeader.Emoji"
+        style="@style/Widget.Material3.Button.Icon"
         android:contentDescription="@string/notification_emoji_desc"
         app:layout_constraintEnd_toStartOf="@id/notification_page_intro_text"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,7 @@
 
     <TextView
         android:id="@+id/notification_page_intro_text"
-        style="@style/PageHeader.Text"
+        style="@style/Widget.Material3.Button"
         android:text="@string/notification_menu_intro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

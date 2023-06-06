@@ -22,10 +22,11 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.REPOTH_API)
+            .baseUrl("http://repoth.my.id:8000")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
+
         return retrofit.create(ApiService::class.java)
     }
 }

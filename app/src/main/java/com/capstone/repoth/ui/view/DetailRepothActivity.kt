@@ -1,4 +1,6 @@
 package com.capstone.repoth.ui.view
 
-class DetailRepothActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class DetailRepothActivity : AppCompatActivity() {
 }
