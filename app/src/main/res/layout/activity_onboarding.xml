@@ -6,21 +6,28 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryContainer"
     app:layoutDescription="@xml/activity_onboarding_scene"
-    tools:context=".ui.view.home.OnboardingActivity"
-    android:id="@+id/Onboarding">
+    tools:context=".ui.view.home.OnboardingActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/onboarding_img_placeholder"
-        style="@style/Widget.AppCompat.ImageButton"
+        style="@style/OnboardingImage.Transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/onboarding_img"
+        style="@style/OnboardingImage"
         android:layout_marginBottom="125dp"
-        android:src="@drawable/notification_icon"
+        android:src="@drawable/onboarding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/onboarding_text_a"
-        style="@style/TextAppearance.AppCompat.Body1"
+        style="@style/OnboardingText"
         android:alpha="0"
         android:text="@string/onboarding_text"
         android:textSize="35sp"
