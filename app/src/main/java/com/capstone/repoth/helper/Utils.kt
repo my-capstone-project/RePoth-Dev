@@ -19,7 +19,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-private const val FILENAME_FORMAT = "dd-MMM-yyyy"
+private const val FILENAME_FORMAT = "dd-MMM-yyyy_HH-mm-ss-SSS"
 
 val timeStamp: String = SimpleDateFormat(
     FILENAME_FORMAT,
