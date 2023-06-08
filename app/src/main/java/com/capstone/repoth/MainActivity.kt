@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.capstone.cobaretrofit.utils.Result
-import com.capstone.repoth.data.repository.HelloRepository
+import com.capstone.cobaretrofit.utils.ResultState
 import com.capstone.repoth.databinding.ActivityMainBinding
 import com.capstone.repoth.ui.viewmodel.MainViewModel
 import com.capstone.repoth.ui.viewmodel.MainViewModelFactory
-import com.capstone.repoth.ui.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,11 +25,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.hello.observe(this) { result ->
             when (result) {
-                is Result.Success -> {
+                is ResultState.Success -> {
                     val response = result.data
                     binding.textHello.text = response.hello
                 }
-                is Result.Error -> {
+                is ResultState.Error -> {
                     val exception = result.error
                     Toast.makeText(
                         this@MainActivity,
