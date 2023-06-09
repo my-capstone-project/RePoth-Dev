@@ -26,7 +26,6 @@ interface RepothDao {
     @Query("SELECT * FROM repoth")
     fun getAllRepoths(): PagingSource<Int, ListRepoth>
 
-
     /**
      * Delete all saved repoths from database
      */

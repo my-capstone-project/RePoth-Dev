@@ -2,17 +2,25 @@ package com.capstone.repoth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import com.capstone.cobaretrofit.utils.ResultState
+import android.view.View
+import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.fragment.NavHostFragment
+import com.capstone.repoth.R
+import com.capstone.repoth.data.api.ApiConfig
+import com.capstone.repoth.data.api.ApiService
 import com.capstone.repoth.databinding.ActivityMainBinding
-import com.capstone.repoth.ui.viewmodel.MainViewModel
-import com.capstone.repoth.ui.viewmodel.MainViewModelFactory
+import com.capstone.repoth.ui.viewmodel.UploadRepothViewModel
+import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+
+    private val uploadRepothViewModel: UploadRepothViewModel by inject()
+    private lateinit var uploadRepothResultViewModel: Observer<ApiService<String>>
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,27 +28,22 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val mainViewModelFactory: MainViewModelFactory = MainViewModelFactory.getInstance(this)
-        viewModel = ViewModelProvider(this, mainViewModelFactory)[MainViewModel::class.java]
-
-        viewModel.hello.observe(this) { result ->
-            when (result) {
-                is ResultState.Success -> {
-                    val response = result.data
-                    binding.textHello.text = response.hello
-                }
-                is ResultState.Error -> {
-                    val exception = result.error
-                    Toast.makeText(
-                        this@MainActivity,
-                        exception,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                else -> {}
-            }
-        }
-        viewModel.fetchData()
+    }
+    private fun isMainPage(currentDestination: NavDestination): Boolean {
+        return currentDestination.id == R.id.homeActivity
+                || currentDestination.id == R.id.detailRepothActivity
+                || currentDestination.id == R.id.mapsActivity
     }
 
+    private fun View.showSnackBar(message: String) {
+        Snackbar.make(
+            this,
+            message,
+            Snackbar.LENGTH_LONG
+        ).also { snackbar ->
+            snackbar.setAction("OK") {
+                snackbar.dismiss()
+            }
+        }.show()
+    }
 }

@@ -8,5 +8,7 @@
     <color name="light_secondaryContainer">#9FF6AE</color>
     <color name="bottom_navbar_color">#DAFFE0</color>
     <color name="bg_color_detail">#FFCBFC</color>
+    <color name="light_onTertiaryContainer">#1C1D00</color>
+    <color name="primary_color_logo">#CD32C3</color>
 
 </resources>
