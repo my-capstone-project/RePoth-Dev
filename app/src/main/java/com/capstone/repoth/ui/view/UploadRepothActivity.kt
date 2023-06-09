@@ -21,7 +21,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.repoth.R
 import com.capstone.repoth.data.model.UserData
 import com.capstone.repoth.data.model.UserPreferences
-import com.capstone.repoth.databinding.ActivityUploadRepothBinding
 import com.capstone.repoth.helper.*
 import com.capstone.repoth.ui.view.camera.CameraActivity
 import com.capstone.repoth.ui.viewmodel.UploadRepothViewModel

@@ -2,7 +2,89 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/Onboarding">
-
-
+    app:startDestination="@id/onboardingActivity">
+    <fragment
+        android:id="@+id/onboardingActivity"
+        android:name="com.capstone.repoth.ui.view.home.OnboardingActivity"
+        android:label="activity_onboarding"
+        tools:layout="@layout/activity_onboarding">
+        <action
+            android:id="@+id/action_onboardingActivity_to_homeActivity"
+            app:destination="@+id/homeActivity"/>
+    </fragment>
+    <fragment
+        android:id="@+id/homeActivity"
+        android:name="com.capstone.repoth.ui.view.home.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" >
+        <action
+            android:id="@+id/action_homeActivity_to_detailRepothActivity"
+            app:destination="@id/detailRepothActivity" />
+        <action
+            android:id="@+id/action_homeActivity_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
+        <action
+            android:id="@+id/action_homeActivity_to_settingsActivity"
+            app:destination="@id/settingsActivity" />
+        <action
+            android:id="@+id/action_homeActivity_to_libraryActivity"
+            app:destination="@+id/libraryActivity"/>
+        <action
+            android:id="@+id/action_homeActivity_to_cameraActivity"
+            app:destination="@+id/cameraActivity"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailRepothActivity"
+        android:name="com.capstone.repoth.ui.view.DetailRepothActivity"
+        android:label="activity_detail_repoth"
+        tools:layout="@layout/activity_detail_repoth">
+        <action
+            android:id="@+id/action_detailRepothActivity_to_homeActivity"
+            app:destination="@+id/homeActivity"/>
+        <action
+            android:id="@+id/action_detailRepothActivity_to_mapsActivity"
+            app:destination="@+id/mapsActivity"/>
+        <action
+            android:id="@+id/action_detailRepothActivity_to_cameraActivity"
+            app:destination="@+id/cameraActivity"/>
+    </fragment>
+    <fragment
+        android:id="@+id/cameraActivity"
+        android:name="com.capstone.repoth.ui.view.camera.CameraActivity"
+        android:label="activity_camera"
+        tools:layout="@layout/activity_camera">
+        <action
+            android:id="@+id/action_cameraActivity_to_imagePreviewActivity"
+            app:destination="@+id/image_taken_preview_container"/>
+    </fragment>
+    <fragment
+        android:id="@+id/settingsActivity"
+        android:name="com.capstone.repoth.ui.view.settings.SettingsActivity"
+        android:label="activity_credit"
+        tools:layout="@layout/activity_credit">
+        <action
+            android:id="@+id/action_settingActivity_to_homeActivity"
+            app:destination="@+id/homeActivity"/>
+        <action
+            android:id="@+id/action_settingActivity_to_libraryActivity"
+            app:destination="@+id/libraryActivity"/>
+        <action
+            android:id="@+id/action_settingActivity_to_cameraActivity"
+            app:destination="@+id/cameraActivity"/>
+    </fragment>
+    <fragment
+        android:id="@+id/libraryActivity"
+        android:name="com.capstone.repoth.ui.library.LibraryHomeMainActivity"
+        android:label="activity_library_home_main"
+        tools:layout="@layout/activity_library_home_main">
+        <action
+            android:id="@+id/action_libraryActivity_to_homeActivity"
+            app:destination="@+id/homeActivity"/>
+        <action
+            android:id="@+id/action_libraryActivity_to_cameraActivity"
+            app:destination="@+id/cameraActivity"/>
+        <action
+            android:id="@+id/action_libraryActivity_to_settingsActivity"
+            app:destination="@+id/settingsActivity"/>
+    </fragment>
 </navigation>
