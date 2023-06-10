@@ -1,14 +1,16 @@
 package com.capstone.repoth.di
 
-import android.content.Context
-import com.capstone.repoth.data.repository.RepothRepository
 import com.capstone.repoth.data.api.ApiConfig
-import com.capstone.repoth.database.RepothDatabase
+import com.capstone.repoth.data.repository.HelloRepository
 
 object Injection {
-    fun provideRepository(context: Context): RepothRepository {
-        val database = RepothDatabase.getDatabase(context)
+    fun provideRepository(): HelloRepository {
         val apiService = ApiConfig.getApiService()
-        return RepothRepository(database, apiService)
+        return HelloRepository.getInstance(apiService)
+    }
+
+    fun provideRepositoryExpress(): HelloRepository {
+        val apiService = ApiConfig.getApiServiceExpress()
+        return HelloRepository.getInstance(apiService)
     }
 }

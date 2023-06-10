@@ -26,6 +26,29 @@ object ApiConfig {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
+
+        return retrofit.create(ApiService::class.java)
+    }
+
+    fun getApiServiceExpress(): ApiService {
+        val loggingInterceptor = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        } else {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
+        val client = OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(20, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.REPOTH_URL_EXPRESS)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
         return retrofit.create(ApiService::class.java)
     }
 }

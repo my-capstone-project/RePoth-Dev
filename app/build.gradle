@@ -18,6 +18,8 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "REPOTH_URL", "\"http://repoth.my.id:8000\""
+        buildConfigField "String", "REPOTH_URL_EXPRESS", "\"https://backend2-g3shqtq6aq-et.a.run.app\""
+        buildConfigField "String", "MAPS_API_KEY", "AIzaSyBHcpoMJtMD0dNgZoadzYC3aHe6NcRTH9E"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -91,6 +93,7 @@ dependencies {
 
     //Maps
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
 
     //Room
     implementation "androidx.room:room-ktx:$room_version"

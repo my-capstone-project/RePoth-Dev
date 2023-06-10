@@ -20,7 +20,7 @@
         android:id="@+id/onboarding_img"
         style="@style/OnboardingImage"
         android:layout_marginBottom="125dp"
-        android:src="@drawable/onboarding"
+        android:src="@drawable/notification_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
