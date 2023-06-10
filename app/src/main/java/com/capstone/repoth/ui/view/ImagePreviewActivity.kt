@@ -7,13 +7,16 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.cobaretrofit.utils.ResultState
+import com.capstone.repoth.MainActivity
 import com.capstone.repoth.databinding.ActivityImagePreviewBinding
 import com.capstone.repoth.helper.reduceFileImage
 import com.capstone.repoth.helper.rotateBitmap
 import com.capstone.repoth.helper.uriToFile
 import com.capstone.repoth.ui.view.camera.CameraActivity
+import com.capstone.repoth.ui.view.maps.MapsActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -42,6 +45,7 @@ class ImagePreviewActivity: AppCompatActivity() {
             binding.imageTakenPreviewContainer.setImageURI(uri)
 
             binding.pictureSendBtn.setOnClickListener{
+                binding.loading.visibility = View.VISIBLE
                 uploadImage()
             }
         }
@@ -66,23 +70,33 @@ class ImagePreviewActivity: AppCompatActivity() {
                 if (result != null) {
                     when (result) {
                         is ResultState.Loading -> {
-//                            binding.progressBar.visibility = View.VISIBLE
+//                            binding.loading.isInvisible = false
                         }
                         is ResultState.Success -> {
-//                            binding.progressBar.visibility = View.GONE
+                            binding.loading.visibility = View.INVISIBLE
                             Toast.makeText(this, result.data.message, Toast.LENGTH_LONG).show()
                             val predict = result.data.result;
                             Log.d(ImagePreviewActivity::class.java.simpleName, "" +
                                     "Filename: ${predict.filename}\n" +
                                     "Pothole: ${predict.pothole}\n" +
                                     "Url: ${predict.url}$")
-//                            startActivity(
-//                                Intent(this, StoryActivity::class.java)
-//                            )
-//                            finish()
+
+                            if (predict.pothole){
+                                // Move to MapsActivity and send the URL
+                                val intent = Intent(this, MapsActivity::class.java)
+                                intent.putExtra("URL", predict.url)
+                                startActivity(intent)
+                                finish()
+
+                            } else {
+                                // Move to HomeActivity
+                                val intent = Intent(this, DetailRepothActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
                         }
                         is ResultState.Error -> {
-//                            binding.progressBar.visibility = View.GONE
+//                            binding.loading.isInvisible = false
                             Toast.makeText(this, "Failure : " + result.error, Toast.LENGTH_LONG)
                                 .show()
                         }

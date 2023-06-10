@@ -1,8 +1,15 @@
 package com.capstone.repoth.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class PredictResponse(
+    @SerializedName("error")
     var error: Boolean,
+
+    @SerializedName("message")
     var message: String,
+
+    @SerializedName("result")
     var result: ResultData
 )
 

@@ -60,11 +60,6 @@ class CameraActivity : AppCompatActivity()
             outputDirectory = createFile(application)
             takePhoto()
         }
-
-        binding.switchCamera.setOnClickListener {
-            back = !back
-            startCamera()
-        }
     }
 
     //
@@ -129,6 +124,8 @@ class CameraActivity : AppCompatActivity()
 
     private fun takePhoto(){
 
+        val uploadActivity = Intent(this@CameraActivity, ImagePreviewActivity::class.java)
+
         val imageCapture = imageCapture ?: return
         val photoFile = outputDirectory
         val outputOption = ImageCapture
@@ -146,7 +143,6 @@ class CameraActivity : AppCompatActivity()
 
                     showToast(this@CameraActivity, "$msg $saveUri")
 
-                    var uploadActivity = Intent(this@CameraActivity, ImagePreviewActivity::class.java)
                     uploadActivity.putExtra("URI", saveUri.toString())
                     startActivity(uploadActivity)
                     finish()

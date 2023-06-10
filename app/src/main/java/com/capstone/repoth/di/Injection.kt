@@ -8,4 +8,9 @@ object Injection {
         val apiService = ApiConfig.getApiService()
         return HelloRepository.getInstance(apiService)
     }
+
+    fun provideRepositoryExpress(): HelloRepository {
+        val apiService = ApiConfig.getApiServiceExpress()
+        return HelloRepository.getInstance(apiService)
+    }
 }

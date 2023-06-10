@@ -7,7 +7,10 @@ import com.capstone.cobaretrofit.utils.ResultState
 import com.capstone.repoth.data.api.ApiService
 import com.capstone.repoth.data.model.Post
 import com.capstone.repoth.data.model.PredictResponse
+import com.capstone.repoth.data.response.UploadRepothResponse
+import com.google.android.gms.maps.model.LatLng
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
 import java.io.File
@@ -27,6 +30,23 @@ class HelloRepository(private val apiService: ApiService) {
         } catch (e: Exception){
             e.printStackTrace()
             Log.d(TAG, "addStory: ${e.message.toString()} ")
+            emit(ResultState.Error(e.message.toString()))
+        }
+    }
+
+    fun uploadPredict(
+        url: RequestBody,
+        latLng: LatLng?
+    ): LiveData<ResultState<UploadRepothResponse>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val lat = latLng?.latitude?.toFloat()
+            val lng = latLng?.longitude?.toFloat()
+            val newStory = apiService.uploadReport(url, lat, lng)
+            emit(ResultState.Success(newStory))
+        } catch (e: Exception){
+            e.printStackTrace()
+            Log.d(TAG, "uploadRepoth: ${e.message.toString()} ")
             emit(ResultState.Error(e.message.toString()))
         }
     }
