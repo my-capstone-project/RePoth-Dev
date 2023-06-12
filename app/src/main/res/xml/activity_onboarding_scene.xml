@@ -4,259 +4,210 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@+id/motionA"
+        motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1500"
-        motion:motionInterpolator="easeIn"
-        motion:autoTransition="animateToEnd">
+        motion:duration="1000">
         <KeyFrameSet>
         </KeyFrameSet>
+        <OnSwipe motion:dragDirection="dragLeft" />
     </Transition>
-
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/onboarding_img"
-            motion:layout_constraintEnd_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="400dp"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="125dp" />
-        <Constraint
-            android:id="@+id/onboarding_text_a"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
+            android:layout_width="0dp"
+            motion:layout_constraintVertical_bias="0.3"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="15dp" />
+            android:id="@+id/logoMenu1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.0" />
+        <Constraint
+            android:layout_height="15dp"
+            motion:layout_constraintStart_toEndOf="@+id/menu2"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="15dp"
+            android:id="@+id/menu3"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp">
+        </Constraint>
+        <Constraint
+            android:layout_height="15dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="15dp"
+            android:id="@+id/menu2"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp">
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu1"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@+id/menu2"
+            android:layout_marginEnd="32dp">
+        </Constraint>
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="@+id/logoMenu1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/logoMenu1"
+            motion:layout_constraintStart_toStartOf="@+id/logoMenu1"
+            android:layout_marginTop="72dp"
+            android:id="@+id/titleMenu1"
+            motion:layout_constraintHorizontal_bias="0.0" />
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/motionA">
+    <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/onboarding_img"
+            android:id="@+id/logoMenu1"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.46"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/logoMenu2"
+            android:layout_width="408dp"
+            android:layout_height="361dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:transitionEasing="decelerate"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="125dp" />
+            motion:layout_constraintHorizontal_bias="0.0"
+            motion:layout_constraintVertical_bias="0.076" />
         <Constraint
-            android:id="@+id/onboarding_text"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
+            motion:layout_constraintEnd_toEndOf="@+id/logoMenu2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/logoMenu2"
+            motion:layout_constraintStart_toStartOf="@+id/logoMenu2"
+            android:layout_marginTop="32dp"
+            android:id="@+id/titleMenu2"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintHorizontal_bias="1.0" />
+        <Constraint
+            android:id="@+id/menu1"
+            motion:layout_constraintEnd_toStartOf="@+id/menu2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="32dp"
+            motion:layout_editor_absoluteX="131dp"
+            motion:layout_editor_absoluteY="688dp">
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="25dp"
-            motion:transitionEasing="decelerate" />
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp">
+        </Constraint>
         <Constraint
-            android:id="@+id/onboarding_imgg"
-            motion:layout_constraintEnd_toStartOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/menu2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="125dp" />
+            android:id="@+id/menu3"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp">
+        </Constraint>
         <Constraint
-            android:id="@+id/onboarding_textt"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:transitionEasing="decelerate"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginStart="0dp" />
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="@+id/logoMenu1"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintEnd_toEndOf="@+id/logoMenu1"
+            android:layout_width="0dp"
+            motion:layout_constraintTop_toBottomOf="@+id/logoMenu1"
+            android:id="@+id/titleMenu1" />
     </ConstraintSet>
     <ConstraintSet
-        android:id="@+id/motionB"
-        motion:deriveConstraintsFrom="@+id/motionA" >
+        android:id="@+id/landing3"
+        motion:deriveConstraintsFrom="@+id/end">
+
         <Constraint
-            android:id="@+id/onboarding_img_b"
+            android:id="@+id/logoMenu2"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
             motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.3"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/logoMenu3"
+            android:layout_width="411dp"
+            android:layout_height="389dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.339"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginBottom="125dp"
-            motion:transitionEasing="decelerate" />
+            motion:layout_constraintHorizontal_bias="0.0" />
         <Constraint
-            android:id="@+id/onboarding_textt"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
+            motion:layout_constraintEnd_toEndOf="@+id/logoMenu3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/logoMenu3"
+            motion:layout_constraintStart_toStartOf="@+id/logoMenu3"
+            android:layout_marginTop="16dp"
+            android:id="@+id/titleMenu3"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintHorizontal_bias="0.0" />
+        <Constraint
+            android:id="@+id/menu1"
+            motion:layout_constraintEnd_toStartOf="@+id/menu2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="32dp">
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp">
+        </Constraint>
+        <Constraint
+            motion:layout_constraintStart_toEndOf="@+id/menu2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/menu3"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="32dp">
+        </Constraint>
+        <Constraint
+            android:id="@+id/start_btn"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            motion:layout_constraintBottom_toTopOf="@+id/menu2"
             android:alpha="1"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="5dp"
-            android:scaleX="0.9"
-            android:scaleY="0.9"
-            motion:transitionEasing="decelerate" />
-        <Constraint
-            android:id="@+id/onboarding_text_a"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="25dp"
-            motion:transitionEasing="accelerate" />
-        <Constraint
-            android:id="@+id/onboarding_text_c"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/onboarding_img_c"
-            motion:layout_constraintEnd_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="125dp"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toBottomOf="@+id/titleMenu3"
+            android:layout_marginTop="11dp"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.512" />
     </ConstraintSet>
     <Transition
-        motion:constraintSetStart="@+id/motionA"
-        motion:constraintSetEnd="@+id/motionB"
-        motion:duration="1500"
-        motion:motionInterpolator="easeIn" >
-        <OnSwipe motion:dragDirection="dragRight" />
-    </Transition>
-    <ConstraintSet
-        android:id="@+id/motionC"
-        motion:deriveConstraintsFrom="@+id/motionB" >
-        <Constraint
-            android:id="@+id/onboarding_text_b"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:transitionEasing="decelerate" />
-        <Constraint
-            android:id="@+id/onboarding_text_c"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="1"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginEnd="5dp"
-            android:scaleX="0.9"
-            android:scaleY="0.9"
-            motion:transitionEasing="decelerate" />
-        <Constraint
-            android:id="@+id/onboarding_img_c"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="125dp"
-            motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="25dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="25dp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:transitionEasing="decelerate" />
-        <Constraint
-            android:id="@+id/onboarding_img_d"
-            motion:layout_constraintEnd_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="125dp" />
-        <Constraint
-            android:id="@+id/onboarding_text_d"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/go_to_home_btn"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="10dp"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0" />
-    </ConstraintSet>
-    <ConstraintSet
-        android:id="@+id/motionDend"
-        motion:deriveConstraintsFrom="@+id/motionC" >
-        <Constraint
-            android:id="@+id/go_to_home_btn"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="10dp"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="1"
-            motion:transitionEasing="decelerate" />
-        <Constraint
-            android:id="@+id/onboarding_text_c"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:transitionEasing="decelerate"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp" />
-        <Constraint
-            android:id="@+id/onboarding_img_d"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginBottom="125dp" />
-        <Constraint
-            android:id="@+id/onboarding_text_d"
-            motion:layout_constraintEnd_toStartOf="@id/go_to_home_btn"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/onboarding_img_placeholder"
-            android:alpha="1"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="15dp"
-            motion:transitionEasing="decelerate" />
-    </ConstraintSet>
-    <Transition
-        motion:constraintSetStart="@+id/motionB"
-        motion:constraintSetEnd="@+id/motionC"
-        motion:duration="1500"
-        motion:motionInterpolator="easeIn">
-        <OnSwipe motion:dragDirection="dragRight" />
-    </Transition>
-    <Transition
-        motion:constraintSetStart="@+id/motionC"
-        motion:constraintSetEnd="@+id/motionDend"
-        motion:motionInterpolator="easeIn"
-        motion:duration="1500" >
-        <OnSwipe motion:dragDirection="dragRight" />
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/onboarding3" >
+        <OnSwipe motion:dragDirection="dragLeft" />
     </Transition>
 </MotionScene>

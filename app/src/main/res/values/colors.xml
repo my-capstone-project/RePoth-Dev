@@ -12,5 +12,6 @@
     <color name="primary_color_logo">#CD32C3</color>
     <color name="success">#82dd55</color>
     <color name="fail">#e23636</color>
-
+    <color name="onboarding_bg_color">#D8CEFF</color>
+    <color name="onboarding_bg_start">#116D6E</color>
 </resources>

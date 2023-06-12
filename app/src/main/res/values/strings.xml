@@ -26,4 +26,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="onboarding1">Welcome to RePoth</string>
+    <string name="onboarding2">Let's keep our roads safe and pothole-free. Start reporting potholes now. Share accurate details about the potholes you encounter. Clear information will help the government to take action.</string>
+    <string name="onboarding3">Let's get started!</string>
+    <string name="start">Start Now</string>
 </resources>
