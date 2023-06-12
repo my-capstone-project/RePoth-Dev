@@ -8,13 +8,13 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
-interface ApiService {
-    @GET("/")
-    suspend fun getHello(): Post
+interface ApiServiceExpress {
 
+    @POST("/uploads")
     @Multipart
-     @POST("/predict")
-     suspend fun postPredict(
-        @Part image: MultipartBody.Part
-     ): PredictResponse
+    suspend fun uploadReport(
+        @Part("imageUrl") imageUrl: RequestBody,
+        @Part("latitude") latitude: Float?,
+        @Part("longitude") longitude: Float?,
+    ): UploadRepothResponse
 }

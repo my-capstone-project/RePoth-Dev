@@ -22,4 +22,8 @@
     <string name="scanner_fab_icon_desc">A report-like icon for indicating that the button is leading to camera reporting feature.</string>
     <string name="logo_content_desc">Logo RePoth</string>
     <string name="app_slogan">Slogan</string>
+    <string name="title_activity_main_bottom">MainBottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

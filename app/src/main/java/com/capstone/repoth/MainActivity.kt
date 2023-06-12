@@ -14,6 +14,7 @@ import com.capstone.repoth.data.api.ApiService
 import com.capstone.repoth.databinding.ActivityMainBinding
 import com.capstone.repoth.ui.view.ImagePreviewActivity
 import com.capstone.repoth.ui.view.camera.CameraActivity
+import com.capstone.repoth.ui.view.maps.MapsActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.report.setOnClickListener {
             startActivity(Intent(this, CameraActivity::class.java))
+        }
+
+        binding.test.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            intent.putExtra("URL", "https://storage.googleapis.com/potholeimages/0b0010cf4cb0c5c2137c9dd0c7b1ee4f.jpg")
+            startActivity(intent)
         }
 
     }

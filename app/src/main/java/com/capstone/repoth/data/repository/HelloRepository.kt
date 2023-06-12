@@ -34,23 +34,6 @@ class HelloRepository(private val apiService: ApiService) {
         }
     }
 
-    fun uploadPredict(
-        url: RequestBody,
-        latLng: LatLng?
-    ): LiveData<ResultState<UploadRepothResponse>> = liveData {
-        emit(ResultState.Loading)
-        try {
-            val lat = latLng?.latitude?.toFloat()
-            val lng = latLng?.longitude?.toFloat()
-            val newStory = apiService.uploadReport(url, lat, lng)
-            emit(ResultState.Success(newStory))
-        } catch (e: Exception){
-            e.printStackTrace()
-            Log.d(TAG, "uploadRepoth: ${e.message.toString()} ")
-            emit(ResultState.Error(e.message.toString()))
-        }
-    }
-
     companion object {
 
         private val TAG = HelloRepository::class.java.simpleName

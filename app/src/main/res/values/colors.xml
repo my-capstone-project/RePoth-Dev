@@ -10,5 +10,7 @@
     <color name="bg_color_detail">#FFCBFC</color>
     <color name="light_onTertiaryContainer">#1C1D00</color>
     <color name="primary_color_logo">#CD32C3</color>
+    <color name="success">#82dd55</color>
+    <color name="fail">#e23636</color>
 
 </resources>

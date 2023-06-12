@@ -84,13 +84,14 @@ class ImagePreviewActivity: AppCompatActivity() {
                             if (predict.pothole){
                                 // Move to MapsActivity and send the URL
                                 val intent = Intent(this, MapsActivity::class.java)
-                                intent.putExtra("URL", predict.url)
+                                intent.putExtra("MAP_URL", predict.url)
                                 startActivity(intent)
                                 finish()
 
                             } else {
                                 // Move to HomeActivity
                                 val intent = Intent(this, DetailRepothActivity::class.java)
+                                intent.putExtra("SUCCESS", false)
                                 startActivity(intent)
                                 finish()
                             }
