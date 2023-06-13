@@ -13,7 +13,7 @@ import okhttp3.RequestBody
 class RepothRepository(private val apiService: ApiServiceExpress) {
 
     fun uploadPredict(
-        username: String,
+        username: RequestBody,
         url: RequestBody,
         latLng: LatLng?
     ): LiveData<ResultState<UploadRepothResponse>> = liveData {

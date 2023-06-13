@@ -14,6 +14,8 @@ class OnboardingActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        finish()
+
         binding.startBtn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()

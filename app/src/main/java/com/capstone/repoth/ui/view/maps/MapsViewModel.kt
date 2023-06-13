@@ -10,6 +10,6 @@ import okhttp3.RequestBody
 
 class MapsViewModel(private val repothRepository: RepothRepository) : ViewModel() {
 
-    fun uploadPredict(imageUrl: RequestBody, username: String, latLng: LatLng) = repothRepository.uploadPredict(username, imageUrl, latLng)
+    fun uploadPredict(imageUrl: RequestBody, username: RequestBody, latLng: LatLng) = repothRepository.uploadPredict(username, imageUrl, latLng)
 
 }

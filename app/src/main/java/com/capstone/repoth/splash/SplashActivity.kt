@@ -21,6 +21,7 @@ class SplashActivity: AppCompatActivity(){
             if (!getBoolean(OnboardingActivity::class.java.simpleName, false)) {
                 // The user hasn't seen the OnboardingSupportFragment yet, so show it
                 startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
+                finish()
             }
         }
 
