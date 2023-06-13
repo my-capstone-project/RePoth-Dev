@@ -1,10 +1,12 @@
 package com.capstone.repoth.ui.view.camera
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,23 +17,27 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.capstone.repoth.MainActivity
 import com.capstone.repoth.databinding.ActivityCameraBinding
 import com.capstone.repoth.helper.createFile
 import com.capstone.repoth.helper.rotateBitmap
 import com.capstone.repoth.helper.showToast
 import com.capstone.repoth.helper.updateTimeStamp
 import com.capstone.repoth.helper.uriToFile
+import com.capstone.repoth.ui.login.LoginActivity
 import com.capstone.repoth.ui.view.ImagePreviewActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.io.File
 
 class CameraActivity : AppCompatActivity()
 {
     private lateinit var binding: ActivityCameraBinding
+    private lateinit var outputDirectory: File
+    private lateinit var auth: FirebaseAuth
 
     private var imageCapture: ImageCapture? = null
-
-    private lateinit var outputDirectory: File
-
     private var back = true
 
     companion object {
@@ -42,13 +48,16 @@ class CameraActivity : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+
+        // If camera permission is allowed
         if (allPermissionGranted()){
             startCamera()
-//            Toast.makeText(this, "We Have Permission", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this, "We Have Permission", Toast.LENGTH_SHORT).show()
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
@@ -59,6 +68,25 @@ class CameraActivity : AppCompatActivity()
             updateTimeStamp()
             outputDirectory = createFile(application)
             takePhoto()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        checkUser()
+    }
+
+    // Check user account
+    private fun checkUser(){
+        // Check if user is signed in (non-null) and update UI accordingly.
+        var currentUser = auth.getCurrentUser()
+        Log.d("Loginnn", "currentUser: ${currentUser}")
+
+        // If user hasn't login then force to Login
+        if (currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 
@@ -78,6 +106,7 @@ class CameraActivity : AppCompatActivity()
                 Toast.makeText(this, "Permission not granted by user", Toast.LENGTH_SHORT).show()
 
                 // Back to dashboard
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
         }
@@ -124,8 +153,6 @@ class CameraActivity : AppCompatActivity()
 
     private fun takePhoto(){
 
-        val uploadActivity = Intent(this@CameraActivity, ImagePreviewActivity::class.java)
-
         val imageCapture = imageCapture ?: return
         val photoFile = outputDirectory
         val outputOption = ImageCapture
@@ -143,8 +170,12 @@ class CameraActivity : AppCompatActivity()
 
                     showToast(this@CameraActivity, "$msg $saveUri")
 
-                    uploadActivity.putExtra("URI", saveUri.toString())
-                    startActivity(uploadActivity)
+                    getSharedPreferences("Settings", Context.MODE_PRIVATE)
+                        .edit()
+                        .putString("pathimage", saveUri.toString())
+                        .apply()
+
+                    startActivity(Intent(this@CameraActivity, ImagePreviewActivity::class.java))
                     finish()
                 }
 

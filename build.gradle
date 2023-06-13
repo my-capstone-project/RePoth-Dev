@@ -8,6 +8,9 @@ buildscript {
         room_version = '2.5.1'
         lottieVersion = '6.0.0'
     }
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.14'
+    }
 }
 plugins {
     id 'com.android.application' version '8.0.1' apply false

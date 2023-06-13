@@ -26,6 +26,7 @@ import com.capstone.repoth.MainActivity
 import com.capstone.repoth.R
 import com.capstone.repoth.databinding.ActivityMapsBinding
 import com.capstone.repoth.helper.showToast
+import com.capstone.repoth.ui.login.LoginActivity
 import com.capstone.repoth.ui.view.DetailRepothActivity
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -39,6 +40,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 
@@ -48,15 +52,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
     private lateinit var mapsViewModel: MapsViewModel
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
-
     private lateinit var lastLocation: LatLng
+    private lateinit var auth: FirebaseAuth
+
     private var imageUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+
         binding.button.visibility = View.INVISIBLE
 
         val mapsViewModelFactory: MapsViewModelFactory = MapsViewModelFactory.getInstance(this)
@@ -69,20 +77,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        checkGPS()
-
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         Log.d("Mappp", "OnCreate")
 
         lastLocation = LatLng(0.0,0.0) // Default location
 
-        imageUrl = intent.getStringExtra("MAP_URL")
+        imageUrl = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("imageurl", null)
 
         binding.button.setOnClickListener {
             // for testing
             // imageUrl = "https://storage.googleapis.com/potholeimages/c43fc8c1aa9dcb93364dfd42db2e8252.jpg"
             if (imageUrl != null){
-                mapsViewModel.uploadPredict(imageUrl.toString().toRequestBody("text/plain".toMediaType()), lastLocation).observe(this) { result ->
+
+                var username = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("username", "").toString()
+
+                mapsViewModel.uploadPredict(imageUrl.toString().toRequestBody("text/plain".toMediaType()), username, lastLocation).observe(this) { result ->
                     if (result != null) {
                         when (result) {
                             is ResultState.Loading -> {
@@ -91,9 +100,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                             is ResultState.Success -> {
                                 Log.d("Mappp", result.data.message)
-                                val intent = Intent(this, DetailRepothActivity::class.java)
-                                intent.putExtra("SUCCESS", true)
-                                startActivity(intent)
+                                getSharedPreferences("Settings", Context.MODE_PRIVATE)
+                                    .edit()
+                                    .putBoolean("success", true)
+                                    .apply()
+                                startActivity(Intent(this, DetailRepothActivity::class.java))
                                 finish()
                             }
 
@@ -115,9 +126,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("Mappp", "OnResume")
+    override fun onStart() {
+        super.onStart()
+
+        checkUser()
+    }
+
+    // Check user account
+    private fun checkUser(){
+        // Check if user is signed in (non-null) and update UI accordingly.
+        var currentUser = auth.getCurrentUser()
+        Log.d("Loginnn", "currentUser: ${currentUser}")
+
+        // If user hasn't login then force to Login
+        if (currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -230,24 +255,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun checkGPS(){
-        val locationRequest = LocationRequest.create().apply {
-            interval = 3000
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        }
-        val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
-        val task = LocationServices.getSettingsClient(this).checkLocationSettings(builder.build())
 
-        task
-            .addOnFailureListener {e ->
-                val statusCode = (e as ResolvableApiException).statusCode
-                if (statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED){
-                    try {
-                        e.startResolutionForResult(this, 100)
-                    } catch (sendEx: IntentSender.SendIntentException) {
-
-                    }
-                }
-            }
-    }
 }

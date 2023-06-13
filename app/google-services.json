@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "679547864804",
+    "project_id": "capstone-repoth",
+    "storage_bucket": "capstone-repoth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679547864804:android:c82fbfc78ee84a20374ef1",
+        "android_client_info": {
+          "package_name": "com.capstone.repoth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679547864804-k60cgkv44ask6j14qd05det20pjrhfor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCicf7qJSXc7kQDpGZj7x5RZJEGSazZq6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679547864804-jp8055eiq2p9ek4invd984jsf6pgnrc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

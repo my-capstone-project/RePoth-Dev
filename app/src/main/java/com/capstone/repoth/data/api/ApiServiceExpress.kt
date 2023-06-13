@@ -13,6 +13,7 @@ interface ApiServiceExpress {
     @POST("/uploads")
     @Multipart
     suspend fun uploadReport(
+        @Part("username") username: String,
         @Part("imageUrl") imageUrl: RequestBody,
         @Part("latitude") latitude: Float?,
         @Part("longitude") longitude: Float?,
