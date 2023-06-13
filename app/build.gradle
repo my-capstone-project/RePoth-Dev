@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -19,14 +20,17 @@ android {
 
         buildConfigField "String", "REPOTH_URL", "\"http://repoth.my.id:8000\""
         buildConfigField "String", "REPOTH_URL_EXPRESS", "\"https://backend2-g3shqtq6aq-et.a.run.app\""
-        buildConfigField "String", "MAPS_API_KEY", "AIzaSyBHcpoMJtMD0dNgZoadzYC3aHe6NcRTH9E"
+        buildConfigField "String", "MAPS_API_KEY", "\"AIzaSyBHcpoMJtMD0dNgZoadzYC3aHe6NcRTH9E\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
         }
     }
     compileOptions {
@@ -50,6 +54,8 @@ android {
         buildConfig true
     }
 }
+
+apply plugin: 'com.android.application'
 
 dependencies {
 
@@ -97,6 +103,9 @@ dependencies {
 
     //Room
     implementation "androidx.room:room-ktx:$room_version"
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
     kapt "androidx.room:room-compiler:$room_version"
 
     //Paging

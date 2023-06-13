@@ -3,16 +3,19 @@ package com.capstone.repoth.helper
 import android.app.Application
 import android.content.ContentResolver
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.util.Patterns
 import android.widget.Toast
 import androidx.exifinterface.media.ExifInterface
+import com.capstone.repoth.MainActivity
 import com.capstone.repoth.R
+import com.capstone.repoth.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseUser
 import java.io.*
 import java.text.SimpleDateFormat
 import java.time.Instant
@@ -123,3 +126,4 @@ fun formatDate(currentDateString: String, targetTimeZone: String): String {
 fun showToast(context: Context, text : String){
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
+

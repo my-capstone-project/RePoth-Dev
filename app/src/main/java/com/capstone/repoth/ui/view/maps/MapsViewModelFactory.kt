@@ -4,18 +4,19 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.repoth.data.repository.HelloRepository
+import com.capstone.repoth.data.repository.RepothRepository
 import com.capstone.repoth.di.Injection
 import com.capstone.repoth.ui.view.ImagePreviewViewModel
 import com.capstone.repoth.ui.view.ImagePreviewViewModelFactory
 
 class MapsViewModelFactory(
-    private val helloRepository: HelloRepository
+    private val repothRepository: RepothRepository
 ): ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-                MapsViewModel(helloRepository) as T
+                MapsViewModel(repothRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

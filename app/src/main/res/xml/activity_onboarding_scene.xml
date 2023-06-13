@@ -210,4 +210,8 @@
         motion:constraintSetEnd="@+id/onboarding3" >
         <OnSwipe motion:dragDirection="dragLeft" />
     </Transition>
+    <Transition
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/landing3"
+        motion:autoTransition="animateToEnd" />
 </MotionScene>

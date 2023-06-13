@@ -1,5 +1,6 @@
 package com.capstone.repoth.ui.view
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,8 +16,12 @@ import com.capstone.repoth.databinding.ActivityImagePreviewBinding
 import com.capstone.repoth.helper.reduceFileImage
 import com.capstone.repoth.helper.rotateBitmap
 import com.capstone.repoth.helper.uriToFile
+import com.capstone.repoth.ui.login.LoginActivity
 import com.capstone.repoth.ui.view.camera.CameraActivity
 import com.capstone.repoth.ui.view.maps.MapsActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -26,26 +31,34 @@ class ImagePreviewActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityImagePreviewBinding
     private lateinit var imagePreviewViewModel: ImagePreviewViewModel
+    private lateinit var auth: FirebaseAuth
     private var getFile: File? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityImagePreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+
         val imagePreviewViewModelFactory: ImagePreviewViewModelFactory = ImagePreviewViewModelFactory.getInstance(this)
         imagePreviewViewModel = ViewModelProvider(
             this, imagePreviewViewModelFactory
         )[ImagePreviewViewModel::class.java]
 
-        var uri = Uri.parse(intent.getStringExtra("URI"))
-        uri.let {
+        // Get uri image from previous
+        val uri = Uri.parse(getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("pathimage", null))
+        if (uri != null){
+            // get file binary
             val myFile = uriToFile(uri, this@ImagePreviewActivity)
             rotateBitmap(myFile)
             getFile = myFile
+
+            // set into activity layout
             binding.imageTakenPreviewContainer.setImageURI(uri)
 
+            // button upload
             binding.pictureSendBtn.setOnClickListener{
-                binding.loading.visibility = View.VISIBLE
                 uploadImage()
             }
         }
@@ -53,6 +66,25 @@ class ImagePreviewActivity: AppCompatActivity() {
         binding.retakeBtn.setOnClickListener {
             // Back to CameraActivity Scene
             startActivity(Intent(this, CameraActivity::class.java))
+            finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        checkUser()
+    }
+
+    // Check user account
+    private fun checkUser(){
+        // Check if user is signed in (non-null) and update UI accordingly.
+        var currentUser = auth.getCurrentUser()
+        Log.d("Loginnn", "currentUser: ${currentUser}")
+
+        // If user hasn't login then force to Login
+        if (currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }
@@ -70,7 +102,7 @@ class ImagePreviewActivity: AppCompatActivity() {
                 if (result != null) {
                     when (result) {
                         is ResultState.Loading -> {
-//                            binding.loading.isInvisible = false
+                            binding.loading.visibility = View.VISIBLE
                         }
                         is ResultState.Success -> {
                             binding.loading.visibility = View.INVISIBLE
@@ -83,20 +115,23 @@ class ImagePreviewActivity: AppCompatActivity() {
 
                             if (predict.pothole){
                                 // Move to MapsActivity and send the URL
-                                val intent = Intent(this, MapsActivity::class.java)
-                                intent.putExtra("URL", predict.url)
-                                startActivity(intent)
+                                getSharedPreferences("Settings", Context.MODE_PRIVATE)
+                                    .edit()
+                                    .putString("imageurl", predict.url)
+                                    .apply()
+                                startActivity(Intent(this, MapsActivity::class.java))
                                 finish()
 
                             } else {
                                 // Move to HomeActivity
                                 val intent = Intent(this, DetailRepothActivity::class.java)
+                                intent.putExtra("SUCCESS", false)
                                 startActivity(intent)
                                 finish()
                             }
                         }
                         is ResultState.Error -> {
-//                            binding.loading.isInvisible = false
+                            binding.loading.visibility = View.INVISIBLE
                             Toast.makeText(this, "Failure : " + result.error, Toast.LENGTH_LONG)
                                 .show()
                         }
