@@ -17,4 +17,11 @@
     <color name="bg_blue">#C6E0F5</color>
     <color name="bg_soft_orange">#F0D9CA</color>
     <color name="bg_soft_brown">#F4E8DA</color>
+
+    <!-- Blues -->
+    <color name="blue_kai">#1B69B3</color>
+
+    <!-- Grey -->
+    <color name="grey_light">#EEEEEE</color>
+
 </resources>

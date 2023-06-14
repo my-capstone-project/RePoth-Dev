@@ -15,7 +15,7 @@ interface ApiServiceExpress {
     suspend fun uploadReport(
         @Part("username") username: RequestBody,
         @Part("imageUrl") imageUrl: RequestBody,
-        @Part("latitude") latitude: Float?,
-        @Part("longitude") longitude: Float?,
+        @Part("latitude") latitude: Double?,
+        @Part("longitude") longitude: Double?,
     ): UploadRepothResponse
 }

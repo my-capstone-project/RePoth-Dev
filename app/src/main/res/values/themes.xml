@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RePoth" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.RePoth" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/blue_kai</item>
+        <item name="toolbarStyle">@style/MyToolbar</item>
+        <item name="background">@color/grey_light</item>
     </style>
 
     <style name="BottomNavbarText">
@@ -87,6 +89,13 @@
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
+    <style name="Theme.RePoth" parent="Base.Theme.RePoth">
 
-    <style name="Theme.RePoth" parent="Base.Theme.RePoth" />
+    </style>
+
+    <!-- Toolbar -->
+    <style name="MyToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="elevationOverlayEnabled">true</item>
+    </style>
+
 </resources>

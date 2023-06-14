@@ -127,3 +127,12 @@ fun showToast(context: Context, text : String){
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
 
+fun preferenceReset(context: Context){
+    // Clear Shared Preferences
+    context.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        .edit()
+        .remove("success")
+        .remove("pathimage")
+        .remove("imageurl")
+        .apply()
+}

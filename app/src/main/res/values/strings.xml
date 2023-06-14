@@ -33,4 +33,6 @@
     <string name="onboarding3">Let\'s get started!</string>
     <string name="start">Start Now</string>
     <string name="your_web_client_id">http://repoth.my.id:8081</string>
+    <string name="home_info">Ayo laporkan jalan berlubang di tempatmu agar info ini bermanfaat bagi banyak orang.</string>
+    <string name="foto_jalan">Arahkan foto ke lubang jalan, pastikan lubang berada ditengah</string>
 </resources>
