@@ -11,7 +11,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.capstone.repoth.MainActivity
 import com.capstone.repoth.data.model.UserPreference
 import com.capstone.repoth.databinding.ActivityOnboardingBinding
 import com.capstone.repoth.ui.login.LoginActivity
@@ -40,7 +39,7 @@ class OnboardingActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(UserPreference.getInstance(dataStore))
-        )[Onboarding::class.java]
+        )[OnboardingViewModel::class.java]
     }
 
     private fun setupAction() {
