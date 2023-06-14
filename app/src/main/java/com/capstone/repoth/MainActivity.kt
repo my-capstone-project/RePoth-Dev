@@ -5,20 +5,22 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
-import android.location.Geocoder
 import android.location.LocationManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.provider.Settings
 import android.util.Log
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import com.capstone.repoth.databinding.ActivityMainBinding
+import com.capstone.repoth.helper.preferenceReset
 import com.capstone.repoth.ui.login.LoginActivity
 import com.capstone.repoth.ui.view.camera.CameraActivity
 import com.capstone.repoth.ui.view.maps.MapsActivity
@@ -28,13 +30,11 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsStatusCodes
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,6 +47,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Clear Shared Preferences
+        preferenceReset(this)
+
+        // Action bar
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.title = "Home"
+
         // Initialize Firebase Auth
         auth = Firebase.auth
 
@@ -58,19 +65,18 @@ class MainActivity : AppCompatActivity() {
         //-----------------------------------------------------------------
         // Button for testing only
         // Testing map
-        binding.test.setOnClickListener {
-            getSharedPreferences("Settings", Context.MODE_PRIVATE)
-                .edit()
-                .putString("imageurl", "https://storage.googleapis.com/potholeimages/0b0010cf4cb0c5c2137c9dd0c7b1ee4f.jpg")
-                .apply()
-            startActivity(Intent(this, MapsActivity::class.java))
-        }
-        // Logout account
-        binding.btnLogout.setOnClickListener {
-            Firebase.auth.signOut()
-            checkUser()
-        }
-        //-----------------------------------------------------------------
+//        binding.test.setOnClickListener {
+//            getSharedPreferences("Settings", Context.MODE_PRIVATE)
+//                .edit()
+//                .putString("imageurl", "https://storage.googleapis.com/potholeimages/0b0010cf4cb0c5c2137c9dd0c7b1ee4f.jpg")
+//                .apply()
+//            startActivity(Intent(this, MapsActivity::class.java))
+//        }
+//        // Logout account
+//        binding.btnLogout.setOnClickListener {
+//
+//        }
+//        //-----------------------------------------------------------------
 
     }
 
@@ -89,6 +95,23 @@ class MainActivity : AppCompatActivity() {
 
         // GetCurrentLocation for checking first
         getMyLocation()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.bottom_nav_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.logout -> {
+                // Logout account
+                Firebase.auth.signOut()
+                checkUser()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 
@@ -179,6 +202,8 @@ class MainActivity : AppCompatActivity() {
         // If user hasn't login then force to Login
         if (currentUser == null) {
             startActivity(Intent(this, LoginActivity::class.java))
+
+            // Reset Preference
             finish()
         }
     }

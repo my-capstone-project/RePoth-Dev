@@ -38,6 +38,10 @@ class ImagePreviewActivity: AppCompatActivity() {
         binding = ActivityImagePreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Action bar
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.title = "Image Preview"
+
         // Initialize Firebase Auth
         auth = Firebase.auth
 
@@ -124,9 +128,7 @@ class ImagePreviewActivity: AppCompatActivity() {
 
                             } else {
                                 // Move to HomeActivity
-                                val intent = Intent(this, DetailRepothActivity::class.java)
-                                intent.putExtra("SUCCESS", false)
-                                startActivity(intent)
+                                startActivity(Intent(this, DetailRepothActivity::class.java))
                                 finish()
                             }
                         }

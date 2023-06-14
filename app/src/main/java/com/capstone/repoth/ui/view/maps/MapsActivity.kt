@@ -62,6 +62,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Action bar
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.title = "Position"
+
         // Initialize Firebase Auth
         auth = Firebase.auth
 
@@ -108,7 +112,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                     .edit()
                                     .putBoolean("success", true)
                                     .apply()
-                                startActivity(Intent(this, DetailRepothActivity::class.java))
+
+                                val intent = Intent(this, DetailRepothActivity::class.java)
+                                intent.putExtra("latitude", lastLocation.latitude)
+                                intent.putExtra("longitude", lastLocation.longitude)
+                                startActivity(intent)
                                 finish()
                             }
 
@@ -218,26 +226,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     Log.d("Mappp", "Latitude ${location.latitude}")
                     Log.d("Mappp", "Longitude ${location.longitude}")
                     lastLocation = LatLng(location.latitude, location.longitude)
-
-                    val geocoder = Geocoder(this)
-                    val test = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                    if (test != null) {
-                        for (t in test){
-                            val text = "PostalCode: ${t.postalCode}\n" +
-                                    "CountryName: ${t.countryName}\n" +
-                                    "Locality: ${t.locality}\n" +
-                                    "AdminArea: ${t.adminArea}\n" +
-                                    "FeatureName: ${t.featureName}\n" +
-                                    "Phone: ${t.phone}\n" +
-                                    "Premises: ${t.premises}\n" +
-                                    "SubAdminArea: ${t.subAdminArea}\n" +
-                                    "SubLocality: ${t.subLocality}\n" +
-                                    "SubThoroughfare: ${t.subThoroughfare}\n" +
-                                    "Thoroughfare: ${t.thoroughfare}\n" +
-                                    "Url: ${t.url}\n"
-                            Log.d("mappp", text)
-                        }
-                    }
 
                     mMap.addMarker(
                         MarkerOptions()

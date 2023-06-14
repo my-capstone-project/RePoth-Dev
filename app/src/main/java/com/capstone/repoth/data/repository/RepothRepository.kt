@@ -19,8 +19,8 @@ class RepothRepository(private val apiService: ApiServiceExpress) {
     ): LiveData<ResultState<UploadRepothResponse>> = liveData {
         emit(ResultState.Loading)
         try {
-            val lat = latLng?.latitude?.toFloat()
-            val lng = latLng?.longitude?.toFloat()
+            val lat = latLng?.latitude?.toDouble()
+            val lng = latLng?.longitude?.toDouble()
             val newStory = apiService.uploadReport(username, url, lat, lng)
             emit(ResultState.Success(newStory))
         } catch (e: Exception){

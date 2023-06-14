@@ -39,6 +39,9 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Action bar
+        supportActionBar?.hide()
+
         // Initialize Firebase Auth
         auth = Firebase.auth
 
