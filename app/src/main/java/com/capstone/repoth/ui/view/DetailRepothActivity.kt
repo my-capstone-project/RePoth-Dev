@@ -1,5 +1,6 @@
 package com.capstone.repoth.ui.view
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
@@ -16,7 +17,7 @@ class DetailRepothActivity : AppCompatActivity() {
         binding = ActivityDetailRepothBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var success = intent.getBooleanExtra("SUCCESS", false)
+        var success = getSharedPreferences("Settings", Context.MODE_PRIVATE).getBoolean("success", false)
 
         val color: Int
 

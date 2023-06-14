@@ -89,9 +89,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // imageUrl = "https://storage.googleapis.com/potholeimages/c43fc8c1aa9dcb93364dfd42db2e8252.jpg"
             if (imageUrl != null){
 
-                var username = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("username", "").toString()
+                var username = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("username", null)
+                if (username == null){
+                    Firebase.auth.signOut()
+                    checkUser()
+                }
 
-                mapsViewModel.uploadPredict(imageUrl.toString().toRequestBody("text/plain".toMediaType()), username, lastLocation).observe(this) { result ->
+                mapsViewModel.uploadPredict(imageUrl.toString().toRequestBody("text/plain".toMediaType()), username.toString().toRequestBody("text/plain".toMediaType()), lastLocation).observe(this) { result ->
                     if (result != null) {
                         when (result) {
                             is ResultState.Loading -> {
