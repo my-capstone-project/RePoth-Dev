@@ -14,4 +14,7 @@
     <color name="fail">#e23636</color>
     <color name="onboarding_bg_color">#D8CEFF</color>
     <color name="onboarding_bg_start">#116D6E</color>
+    <color name="bg_blue">#C6E0F5</color>
+    <color name="bg_soft_orange">#F0D9CA</color>
+    <color name="bg_soft_brown">#F4E8DA</color>
 </resources>
