@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.capstone.repoth"
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--
@@ -99,8 +98,7 @@
 
         <activity
             android:name=".ui.view.HomeActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
 
         <activity
             android:name=".ui.login.LoginActivity"
