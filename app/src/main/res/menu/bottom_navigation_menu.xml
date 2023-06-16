@@ -7,20 +7,11 @@
 
     <item
         android:id="@+id/navbar_menu_2"
-        android:title="@string/history_navbar_menu"
-        android:icon="@drawable/history_menu_icon" />
-
-    <item
-        android:id="@+id/navbar_menu_middle_placeholder"
-        android:title="@string/report_navbar_menu" />
+        android:title="@string/report_navbar_menu"
+        android:icon="@drawable/report_navbar_menu"/>
 
     <item
         android:id="@+id/navbar_menu_3"
-        android:title="@string/library_navbar_menu"
-        android:icon="@drawable/library_menu_icon" />
-
-    <item
-        android:id="@+id/navbar_menu_4"
         android:title="@string/settings_navbar_menu"
         android:icon="@drawable/ic_baseline_setting" />
 </menu>

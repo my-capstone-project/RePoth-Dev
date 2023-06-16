@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                 Firebase.auth.signOut()
                 checkUser()
             }
+
         }
 
         return super.onOptionsItemSelected(item)
@@ -119,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         return currentDestination.id == R.id.homeActivity
                 || currentDestination.id == R.id.detailRepothActivity
                 || currentDestination.id == R.id.mapsActivity
+                || currentDestination.id == R.id.settingsActivity
     }
 
     private fun View.showSnackBar(message: String) {

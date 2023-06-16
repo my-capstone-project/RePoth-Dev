@@ -35,4 +35,23 @@
     <string name="your_web_client_id">http://repoth.my.id:8081</string>
     <string name="home_info">Ayo laporkan jalan berlubang di tempatmu agar info ini bermanfaat bagi banyak orang.</string>
     <string name="foto_jalan">Arahkan foto ke lubang jalan, pastikan lubang berada ditengah</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_settings">Settings</string>
+    <string name="settings_emoji_desc">Raising hands</string>
+    <string name="settings_page_header">Settings</string>
+    <string name="settings_text_2">C23-PS027 Team</string>
+    <string name="settings_part_1_intro">About Us</string>
+    <string name="settings_part_2_intro">Attribusi</string>
+    <string name="settings_text_1">RePoth is a application:</string>
+    <string name="team_member_1">Chayun Fadila</string>
+    <string name="team_member_2">Maskumambang Padmanegara</string>
+    <string name="team_member_3">Muhammad Fikri</string>
+    <string name="team_member_4">Reza Syahpalevi Mahardika</string>
+    <string name="team_member_5">Apriandi Rasyid Almajid</string>
+    <string name="team_member_6">Muhammad Ramdhani</string>
+    <string name="ml_learning_path">Machine Learning</string>
+    <string name="md_learning_path">Mobile Development</string>
+    <string name="cc_learning_path">Cloud Computing</string>
+    <string name="credits_part_1_intro">About us</string>
+    <string name="credits_part_2_intro">Attribusi</string>
 </resources>

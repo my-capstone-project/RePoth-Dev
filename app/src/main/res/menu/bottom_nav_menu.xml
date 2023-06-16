@@ -5,5 +5,8 @@
         android:id="@+id/logout"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Logout" />
-
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_baseline_setting"
+        android:title="Settings"/>
 </menu>

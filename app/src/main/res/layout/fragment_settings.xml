@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="@color/onboarding_bg_color"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.settings.CreditsActivity">
+        <ImageView
+            android:id="@+id/settings_page_intro_emoji_icon"
+            style="@style/PageHeader.Emoji"
+
+            app:layout_constraintEnd_toStartOf="@id/settings_page_intro_text"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:contentDescription="@string/settings_emoji_desc"
+
+            android:src="@drawable/settings_emoji_icon" />
+
+        <TextView
+            android:id="@+id/settings_page_intro_text"
+            style="@style/PageHeader.Text"
+
+            android:text="@string/settings_page_header"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/settings_part_1"
+            style="@style/Card.Settings"
+
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
+
+            app:layout_constraintTop_toBottomOf="@id/settings_page_intro_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:text="@string/credits_part_1_intro"
+
+                style="@style/CardText.SettingsPart"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/settings_text_1"
+
+            style="@style/SettingsText.Header"
+            android:text="@string/settings_text_1"
+
+            app:layout_constraintTop_toBottomOf="@id/settings_part_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/settings_text_2_card"
+            style="@style/Card.Settings.PartIntro"
+
+            app:layout_constraintTop_toBottomOf="@id/settings_text_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/settings_text_2"
+
+                style="@style/CardText.SettingsPart.SmallText"
+
+                android:text="@string/settings_text_2" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_member_1_card"
+            style="@style/Card.Settings.Creator.Left.Android"
+
+            app:layout_constraintTop_toBottomOf="@id/settings_text_2_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/half_content_guideline">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/member_1_txt"
+
+                    style="@style/CardText.Settings"
+
+                    android:text="@string/team_member_1"/>
+
+                <TextView
+                    android:id="@+id/member_1_text_jobdesc"
+                    style="@style/CardText.Settings.LowerText"
+
+                    android:text="@string/md_learning_path" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_member_2_card"
+            style="@style/Card.Settings.Creator.Right.Cloud"
+
+            app:cardBackgroundColor="?attr/colorSecondaryContainer"
+
+            app:layout_constraintTop_toBottomOf="@id/settings_text_2_card"
+            app:layout_constraintStart_toEndOf="@id/half_content_guideline"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/member_2_txt"
+
+                    style="@style/CardText.Settings"
+                    android:text="@string/team_member_2"/>
+
+                <TextView
+                    android:id="@+id/member_2_text_jobdesc"
+                    style="@style/CardText.Settings.LowerText"
+
+                    android:text="@string/cc_learning_path" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_member_3_card"
+            style="@style/Card.Settings.Creator.Left.Cloud"
+
+            app:layout_constraintTop_toBottomOf="@id/team_member_1_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/half_content_guideline">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/member_3_txt"
+                    style="@style/CardText.Settings"
+                    android:text="@string/team_member_3"/>
+
+                <TextView
+                    android:id="@+id/member_3_text_jobdesc"
+                    style="@style/CardText.Settings.LowerText"
+
+                    android:text="@string/cc_learning_path" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_member_4_card"
+            style="@style/Card.Settings.Creator.Right.Ai"
+
+            app:layout_constraintTop_toBottomOf="@id/team_member_2_card"
+            app:layout_constraintStart_toEndOf="@id/half_content_guideline"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/member_4_txt"
+                    style="@style/CardText.Settings"
+                    android:text="@string/team_member_4"/>
+
+                <TextView
+                    android:id="@+id/member_4_text_jobdesc"
+                    style="@style/CardText.Settings.LowerText"
+
+                    android:text="@string/ml_learning_path"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_member_5_card"
+            style="@style/Card.Settings.Creator.Left.Ai"
+
+            app:layout_constraintTop_toBottomOf="@id/team_member_3_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/half_content_guideline">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/member_5_txt"
+                    style="@style/CardText.Settings"
+                    android:text="@string/team_member_5"/>
+
+                <TextView
+                    android:id="@+id/member_5_text_jobdesc"
+                    style="@style/CardText.Settings.LowerText"
+
+                    android:text="@string/cc_learning_path"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/team_member_6_card"
+            style="@style/Card.Settings.Creator.Right.Ai"
+
+            app:layout_constraintTop_toBottomOf="@id/team_member_4_card"
+            app:layout_constraintStart_toEndOf="@id/half_content_guideline"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/member_6_txt"
+                    style="@style/CardText.Settings"
+                    android:text="@string/team_member_6"/>
+
+                <TextView
+                    android:id="@+id/member_6_text_jobdesc"
+                    style="@style/CardText.Settings.LowerText"
+
+                    android:text="@string/cc_learning_path"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/half_content_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            app:layout_constraintGuide_percent="0.5"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -97,5 +97,156 @@
     <style name="MyToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="elevationOverlayEnabled">true</item>
     </style>
+    <style name="Card">
+        <item name="cardElevation">35dp</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+    <style name="Card.Settings">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="cardCornerRadius">10dp</item>
+    </style>
+
+    <style name="Card.Settings.PartIntro">
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <style name="Card.Settings.Creator">
+        <item name="android:layout_width">0dp</item>
+
+        <item name="android:alpha">0.99</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Left">
+        <item name="android:layout_marginStart">35dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Right">
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Left.Android">
+        <item name="cardBackgroundColor">@color/bg_soft_brown</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Left.Ai">
+        <item name="cardBackgroundColor">@color/bg_soft_brown</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Left.Cloud">
+        <item name="cardBackgroundColor">@color/bg_soft_brown</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Right.Android">
+        <item name="cardBackgroundColor">@color/bg_soft_brown</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Right.Ai">
+        <item name="cardBackgroundColor">@color/bg_soft_brown</item>
+    </style>
+
+    <style name="Card.Settings.Creator.Right.Cloud">
+        <item name="cardBackgroundColor">@color/bg_soft_brown</item>
+    </style>
+
+    <style name="CardText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="CardText.RecyclerView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CardText.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CardText.SettingsPart">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:fontFamily">@font/poppins_black</item>
+        <item name="android:textColor">?attr/colorOnPrimaryContainer</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="CardText.SettingsPart.SmallText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/poppins_black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CardText.Settings">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="CardText.Settings.LowerText">
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="SettingsText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SettingsText.Header">
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SettingsText.Small">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
 
 </resources>

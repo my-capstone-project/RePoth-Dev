@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bottom_navbar_color"
-        app:menu="@menu/bottom_navigation_menu"
+        app:menu="@menu/bottom_nav_menu"
         app:itemTextAppearanceActive="@style/BottomNavbarText"
         app:itemTextAppearanceInactive="@style/BottomNavbarText"
         android:alpha="0"
@@ -27,22 +27,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/scanner_to_action_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/scanner_fab_icon_desc"
-        style="?attr/floatingActionButtonLargePrimaryStyle"
-        android:src="@drawable/report_navbar_menu"
-        app:maxImageSize="65dp"
-        app:rippleColor="@color/dark_secondary"
-        app:backgroundTint="@color/light_tertiaryContainer"
-        android:alpha="0"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="@id/bottom_navbar"
-        app:layout_constraintTop_toTopOf="@id/bottom_navbar"
-        app:layout_constraintStart_toStartOf="@id/bottom_navbar"
-        app:layout_constraintEnd_toEndOf="@id/bottom_navbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

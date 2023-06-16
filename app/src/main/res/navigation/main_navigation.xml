@@ -14,8 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeActivity"
-        android:name="com.capstone.repoth.ui.view.home.HomeActivity"
-        android:label="activity_home"
+        android:name="com.capstone.repoth.ui.view.HomeActivity"
         tools:layout="@layout/activity_home" >
         <action
             android:id="@+id/action_homeActivity_to_detailRepothActivity"
@@ -24,7 +23,7 @@
             android:id="@+id/action_homeActivity_to_mapsActivity"
             app:destination="@id/mapsActivity" />
         <action
-            android:id="@+id/action_homeActivity_to_settingsActivity"
+            android:id="@+id/action_homeActivity_to_settingsFragment"
             app:destination="@id/settingsActivity" />
         <action
             android:id="@+id/action_homeActivity_to_libraryActivity"
@@ -59,17 +58,17 @@
     </fragment>
     <fragment
         android:id="@+id/settingsActivity"
-        android:name="com.capstone.repoth.ui.view.settings.SettingsActivity"
+        android:name="com.capstone.repoth.ui.view.settings.SettingsFragment"
         android:label="activity_credit"
-        tools:layout="@layout/activity_credit">
+        tools:layout="@layout/fragment_settings">
         <action
-            android:id="@+id/action_settingActivity_to_homeActivity"
+            android:id="@+id/action_settingFragment_to_homeActivity"
             app:destination="@+id/homeActivity"/>
         <action
-            android:id="@+id/action_settingActivity_to_libraryActivity"
+            android:id="@+id/action_settingFragment_to_libraryActivity"
             app:destination="@+id/libraryActivity"/>
         <action
-            android:id="@+id/action_settingActivity_to_cameraActivity"
+            android:id="@+id/action_settingFragment_to_cameraActivity"
             app:destination="@+id/cameraActivity"/>
     </fragment>
     <fragment
@@ -84,7 +83,7 @@
             android:id="@+id/action_libraryActivity_to_cameraActivity"
             app:destination="@+id/cameraActivity"/>
         <action
-            android:id="@+id/action_libraryActivity_to_settingsActivity"
+            android:id="@+id/action_libraryActivity_to_settingsFragment"
             app:destination="@+id/settingsActivity"/>
     </fragment>
 </navigation>
